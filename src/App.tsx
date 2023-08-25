@@ -1,16 +1,22 @@
 import styled from "styled-components";
 import TextInputArea from "./components/TextInputArea";
 import TypeButtonArea from "./components/TypeButtonArea";
+import ColorButtonArea from "./components/ColorButtonArea";
+import Screen from "./components/Screen";
 
 function App() {
   return (
     <Container>
       <ScreenBox>
-        <Screen>Screen area</Screen>
+        <Screen />
+
         <TextInputArea />
         <TypeButtonArea />
-        <div>Thumbnail background color area</div>
-        <div>file upload area</div>
+        <ColorButtonArea />
+        <ButtonBox>
+          <InitButton>초기화</InitButton>
+          <UploadButton>파일 업로드</UploadButton>
+        </ButtonBox>
       </ScreenBox>
     </Container>
   );
@@ -25,9 +31,27 @@ const ScreenBox = styled.div`
   height: 402.083px;
   margin: 0 auto;
 `;
-const Screen = styled.div`
-  width: 768px;
-  height: 402.083px;
-  border: 1px solid black;
+
+const ButtonBox = styled.div`
+  min-width: 768px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+const InitButton = styled.button`
+  background-color: grey;
+  border: none;
+  border-radius: 10px;
+  width: 190px;
+  height: 38px;
+  margin-right: 20px;
+`;
+const UploadButton = styled.button`
+  background-color: grey;
+  border: none;
+  border-radius: 10px;
+  width: 190px;
+  height: 38px;
 `;
 export default App;

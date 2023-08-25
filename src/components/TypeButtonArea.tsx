@@ -25,7 +25,7 @@ const TypeTitle = styled.span`
   margin-right: 60px;
 `;
 const TypeButton = styled.button`
-  background-color: grey;
+  background-color: #337ccf;
   border: none;
   border-radius: 10px;
   width: 190px;
