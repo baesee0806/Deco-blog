@@ -1,12 +1,36 @@
+import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
+import { typeState } from "../recoil/atoms";
 
 function TypeButtonArea() {
+  const setTypeBtnState = useSetRecoilState(typeState);
+  const allTypeBtn = (type: number): void => {
+    setTypeBtnState(type);
+  };
   return (
     <TypeButtonContainer>
       <TypeTitle>썸네일 타입</TypeTitle>
-      <TypeButton>제목 / 부제목 / 분류</TypeButton>
-      <TypeButton>제목 / 부제목</TypeButton>
-      <TypeButton>제목</TypeButton>
+      <TypeButton
+        onClick={() => {
+          allTypeBtn(1);
+        }}
+      >
+        제목 / 부제목 / 분류
+      </TypeButton>
+      <TypeButton
+        onClick={() => {
+          allTypeBtn(2);
+        }}
+      >
+        제목 / 부제목
+      </TypeButton>
+      <TypeButton
+        onClick={() => {
+          allTypeBtn(3);
+        }}
+      >
+        제목
+      </TypeButton>
     </TypeButtonContainer>
   );
 }

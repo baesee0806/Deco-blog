@@ -4,19 +4,48 @@ import {
   firstInputState,
   secondInputState,
   thirdInputState,
+  typeState,
 } from "../recoil/atoms";
 
 function Screen() {
+  const typeBtnState = useRecoilValue<number>(typeState);
   const firstInput = useRecoilValue<string>(firstInputState);
   const secondInput = useRecoilValue<string>(secondInputState);
   const thirdInput = useRecoilValue<string>(thirdInputState);
-  return (
-    <ScreenContainer>
-      <Title>{firstInput.length > 0 ? firstInput : "제목"}</Title>
-      <SubTitle>{secondInput.length ? secondInput : "부제목"}</SubTitle>
-      <Category>{thirdInput.length ? thirdInput : "분류"}</Category>
-    </ScreenContainer>
-  );
+  if (typeBtnState === 1) {
+    return (
+      <ScreenContainer>
+        <Title>{firstInput.length > 0 ? firstInput : "제목"}</Title>
+        <SubTitle>{secondInput.length ? secondInput : "부제목"}</SubTitle>
+        <Category>{thirdInput.length ? thirdInput : "분류"}</Category>
+      </ScreenContainer>
+    );
+  }
+  if (typeBtnState === 2) {
+    return (
+      <ScreenContainer>
+        <Title>{firstInput.length > 0 ? firstInput : "제목"}</Title>
+        <SubTitle>{secondInput.length ? secondInput : "부제목"}</SubTitle>
+        <Category></Category>
+      </ScreenContainer>
+    );
+  }
+  if (typeBtnState === 3) {
+    return (
+      <ScreenContainer>
+        <Title>{firstInput.length > 0 ? firstInput : "제목"}</Title>
+        <SubTitle></SubTitle>
+        <Category></Category>
+      </ScreenContainer>
+    );
+  }
+  // return (
+  //   <ScreenContainer>
+  //     <Title>{firstInput.length > 0 ? firstInput : "제목"}</Title>
+  //     <SubTitle>{secondInput.length ? secondInput : "부제목"}</SubTitle>
+  //     <Category>{thirdInput.length ? thirdInput : "분류"}</Category>
+  //   </ScreenContainer>
+  // );
 }
 const ScreenContainer = styled.div`
   width: 768px;
@@ -36,12 +65,14 @@ const Title = styled.div`
   font-size: 40px;
   border-bottom: 1px solid black;
 `;
+
 const SubTitle = styled.div`
   display: flex;
   align-items: flex-end;
   height: 10%;
   font-size: 20px;
 `;
+
 const Category = styled.div`
   display: flex;
   align-items: flex-end;

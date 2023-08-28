@@ -12,3 +12,7 @@ export const thirdInputState = atom<string>({
   key: "thirdInputState",
   default: "",
 });
+export const typeState = atom<number>({
+  key: "typeState",
+  default: 1,
+});
