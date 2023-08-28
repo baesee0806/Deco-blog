@@ -1,11 +1,20 @@
+import { useRecoilValue } from "recoil";
 import styled from "styled-components";
+import {
+  firstInputState,
+  secondInputState,
+  thirdInputState,
+} from "../recoil/atoms";
 
 function Screen() {
+  const firstInput = useRecoilValue<string>(firstInputState);
+  const secondInput = useRecoilValue<string>(secondInputState);
+  const thirdInput = useRecoilValue<string>(thirdInputState);
   return (
     <ScreenContainer>
-      <Title>제목</Title>
-      <SubTitle>부제목</SubTitle>
-      <Category>분류</Category>
+      <Title>{firstInput.length > 0 ? firstInput : "제목"}</Title>
+      <SubTitle>{secondInput.length ? secondInput : "부제목"}</SubTitle>
+      <Category>{thirdInput.length ? thirdInput : "분류"}</Category>
     </ScreenContainer>
   );
 }

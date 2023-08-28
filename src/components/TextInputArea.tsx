@@ -1,10 +1,47 @@
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import {
+  firstInputState,
+  secondInputState,
+  thirdInputState,
+} from "../recoil/atoms";
 function TextInputArea() {
+  const [firstInput, setFirstInput] = useRecoilState<string>(firstInputState);
+  const [secondInput, setSecondInput] =
+    useRecoilState<string>(secondInputState);
+  const [thirdInput, setThirdInput] = useRecoilState<string>(thirdInputState);
+  const inputHandler = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    setState: React.Dispatch<React.SetStateAction<string>>
+  ): void => {
+    setState(e.target.value);
+  };
   return (
     <TextInputcontainer>
-      <FirstInput type="text" placeholder="-Text를 입력하세요" />
-      <SecondInput type="text" placeholder="-Text를 입력하세요" />
-      <ThirdInput type="text" placeholder="-Text를 입력하세요" />
+      <FirstInput
+        type="text"
+        placeholder="-Text를 입력하세요"
+        value={firstInput}
+        onChange={(e) => {
+          inputHandler(e, setFirstInput);
+        }}
+      />
+      <SecondInput
+        type="text"
+        placeholder="-Text를 입력하세요"
+        value={secondInput}
+        onChange={(e) => {
+          inputHandler(e, setSecondInput);
+        }}
+      />
+      <ThirdInput
+        type="text"
+        placeholder="-Text를 입력하세요"
+        value={thirdInput}
+        onChange={(e) => {
+          inputHandler(e, setThirdInput);
+        }}
+      />
     </TextInputcontainer>
   );
 }

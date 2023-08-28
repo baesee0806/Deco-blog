@@ -9,7 +9,6 @@ function App() {
     <Container>
       <ScreenBox>
         <Screen />
-
         <TextInputArea />
         <TypeButtonArea />
         <ColorButtonArea />
