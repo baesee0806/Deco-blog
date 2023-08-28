@@ -1,36 +1,39 @@
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { typeState } from "../recoil/atoms";
 
 function TypeButtonArea() {
-  const setTypeBtnState = useSetRecoilState(typeState);
+  const [typeBtnState, setTypeBtnState] = useRecoilState(typeState);
   const allTypeBtn = (type: number): void => {
     setTypeBtnState(type);
   };
   return (
     <TypeButtonContainer>
       <TypeTitle>썸네일 타입</TypeTitle>
-      <TypeButton
+      <FirstTypeButton
         onClick={() => {
           allTypeBtn(1);
         }}
+        hoverState={typeBtnState}
       >
         제목 / 부제목 / 분류
-      </TypeButton>
-      <TypeButton
+      </FirstTypeButton>
+      <SecondTypeButton
         onClick={() => {
           allTypeBtn(2);
         }}
+        hoverState={typeBtnState}
       >
         제목 / 부제목
-      </TypeButton>
-      <TypeButton
+      </SecondTypeButton>
+      <ThirdTypeButton
         onClick={() => {
           allTypeBtn(3);
         }}
+        hoverState={typeBtnState}
       >
-        제목
-      </TypeButton>
+        제목 / 분류
+      </ThirdTypeButton>
     </TypeButtonContainer>
   );
 }
@@ -48,9 +51,23 @@ const TypeTitle = styled.span`
   font-weight: bold;
   margin-right: 60px;
 `;
-const TypeButton = styled.button`
-  background-color: #337ccf;
-  border: none;
+const FirstTypeButton = styled.button<{ hoverState: number }>`
+  background-color: ${(props) => (props.hoverState === 1 ? "#337ccf" : "#fff")};
+  border: 1px solid #337ccf;
+  border-radius: 10px;
+  width: 190px;
+  height: 38px;
+`;
+const SecondTypeButton = styled.button<{ hoverState: number }>`
+  background-color: ${(props) => (props.hoverState === 2 ? "#337ccf" : "#fff")};
+  border: 1px solid #337ccf;
+  border-radius: 10px;
+  width: 190px;
+  height: 38px;
+`;
+const ThirdTypeButton = styled.button<{ hoverState: number }>`
+  background-color: ${(props) => (props.hoverState === 3 ? "#337ccf" : "#fff")};
+  border: 1px solid #337ccf;
   border-radius: 10px;
   width: 190px;
   height: 38px;

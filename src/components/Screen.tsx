@@ -35,17 +35,10 @@ function Screen() {
       <ScreenContainer>
         <Title>{firstInput.length > 0 ? firstInput : "제목"}</Title>
         <SubTitle></SubTitle>
-        <Category></Category>
+        <Category>{thirdInput.length ? thirdInput : "분류"}</Category>
       </ScreenContainer>
     );
   }
-  // return (
-  //   <ScreenContainer>
-  //     <Title>{firstInput.length > 0 ? firstInput : "제목"}</Title>
-  //     <SubTitle>{secondInput.length ? secondInput : "부제목"}</SubTitle>
-  //     <Category>{thirdInput.length ? thirdInput : "분류"}</Category>
-  //   </ScreenContainer>
-  // );
 }
 const ScreenContainer = styled.div`
   width: 768px;
