@@ -12,6 +12,7 @@ function Screen() {
   const firstInput = useRecoilValue<string>(firstInputState);
   const secondInput = useRecoilValue<string>(secondInputState);
   const thirdInput = useRecoilValue<string>(thirdInputState);
+
   if (typeBtnState === 1) {
     return (
       <ScreenContainer>
