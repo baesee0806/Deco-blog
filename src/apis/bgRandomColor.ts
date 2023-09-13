@@ -36,4 +36,3 @@ export const randomFastelColor = (): string => {
   const randomIndex = Math.floor(Math.random() * pastelColors.length);
   return pastelColors[randomIndex];
 };
-console.log(pastelColors.length, randomFastelColor());
