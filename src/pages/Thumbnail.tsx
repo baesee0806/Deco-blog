@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import LayoutBtn from "../components/thumbnail/LayoutBtn";
 import Screen from "../components/thumbnail/Screen";
+import TextInput from "../components/thumbnail/TextInput";
 
 function Thumbnail() {
   return (
     <Container>
       <LayoutBtn />
       <Screen />
+      <TextInput />
     </Container>
   );
 }
