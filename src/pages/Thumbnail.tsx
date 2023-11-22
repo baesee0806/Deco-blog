@@ -4,15 +4,32 @@ import Screen from "../components/thumbnail/Screen";
 import TextInput from "../components/thumbnail/TextInput";
 import OptionBtn from "../components/thumbnail/OptionBtn";
 import { useState } from "react";
+import { useInput } from "../hooks/useInput";
 
 function Thumbnail() {
   const [layoutValue, setLayoutValue] = useState(1);
+  const {
+    title,
+    subtitle,
+    category,
+    titleOnChange,
+    subtitleOnChange,
+    categoryOnChange,
+  } = useInput();
 
   return (
     <Container>
       <LayoutBtn layoutValue={layoutValue} setLayoutValue={setLayoutValue} />
-      <Screen />
-      <TextInput layoutValue={layoutValue} />
+      <Screen title={title} subtitle={subtitle} category={category} />
+      <TextInput
+        layoutValue={layoutValue}
+        title={title}
+        subtitle={subtitle}
+        category={category}
+        titleOnChange={titleOnChange}
+        subtitleOnChange={subtitleOnChange}
+        categoryOnChange={categoryOnChange}
+      />
       <OptionBtn />
     </Container>
   );

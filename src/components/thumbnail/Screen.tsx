@@ -1,12 +1,18 @@
 import styled from "styled-components";
 
-function Screen() {
+interface ScreenProps {
+  title: string;
+  subtitle: string;
+  category: string;
+}
+
+function Screen({ title, subtitle, category }: ScreenProps) {
   return (
     <Container>
-      <Title>제목을 입력하세요</Title>
+      <Title>{title || "제목을 입력하세요"}</Title>
       <Line />
-      <Subtitle>부제목을 입력하세요</Subtitle>
-      <Classification>분류를 입력하세요</Classification>
+      <Subtitle>{subtitle || "부제목을 입력하세요"}</Subtitle>
+      <Classification>{category || "분류를 입력하세요"}</Classification>
     </Container>
   );
 }

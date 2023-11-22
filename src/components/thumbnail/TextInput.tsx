@@ -1,7 +1,25 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-function TextInput({ layoutValue }: { layoutValue: number }) {
+interface TextInputProps {
+  layoutValue: number;
+  title: string;
+  subtitle: string;
+  category: string;
+  titleOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  subtitleOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  categoryOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+function TextInput({
+  layoutValue,
+  title,
+  subtitle,
+  category,
+  titleOnChange,
+  subtitleOnChange,
+  categoryOnChange,
+}: TextInputProps) {
   const [isTitleActive, setTitleActive] = useState(false);
   const [isSubtitleActive, setSubtitleActive] = useState(false);
   const [isCategoryActive, setCategoryActive] = useState(false);
@@ -32,6 +50,9 @@ function TextInput({ layoutValue }: { layoutValue: number }) {
         <InputLabel $active={isTitleActive.toString()}>제목</InputLabel>
         <Input
           type="text"
+          value={title}
+          placeholder="제목을 입력하세요"
+          onChange={(e) => titleOnChange(e)}
           onFocus={() => handleFocus("title")}
           onBlur={() => handleBlur("title")}
         />
@@ -41,6 +62,9 @@ function TextInput({ layoutValue }: { layoutValue: number }) {
           <InputLabel $active={isSubtitleActive.toString()}>부제목</InputLabel>
           <Input
             type="text"
+            value={subtitle}
+            placeholder="부제목을 입력하세요"
+            onChange={(e) => subtitleOnChange(e)}
             onFocus={() => handleFocus("subtitle")}
             onBlur={() => handleBlur("subtitle")}
           />
@@ -51,6 +75,9 @@ function TextInput({ layoutValue }: { layoutValue: number }) {
           <InputLabel $active={isCategoryActive.toString()}>분류</InputLabel>
           <Input
             type="text"
+            value={category}
+            placeholder="분류를 입력하세요"
+            onChange={(e) => categoryOnChange(e)}
             onFocus={() => handleFocus("category")}
             onBlur={() => handleBlur("category")}
           />
@@ -66,7 +93,8 @@ const InputBox = styled.div`
 `;
 const InputLabel = styled.div<{ $active: string }>`
   font-size: 24px;
-  color: ${(props) => (props.$active === "true" ? "#ff0000" : "#828282")};
+  font-weight: 700;
+  color: ${(props) => (props.$active === "true" ? "#b786c5" : "#828282")};
   transition: color 0.3s ease-in-out;
 `;
 const Input = styled.input`
