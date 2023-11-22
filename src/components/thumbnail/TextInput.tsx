@@ -1,11 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 
-type InputLabelProps = {
-  isActive: boolean;
-};
-
-function TextInput() {
+function TextInput({ layoutValue }: { layoutValue: number }) {
   const [isTitleActive, setTitleActive] = useState(false);
   const [isSubtitleActive, setSubtitleActive] = useState(false);
   const [isCategoryActive, setCategoryActive] = useState(false);
@@ -33,29 +29,33 @@ function TextInput() {
   return (
     <>
       <InputBox>
-        <InputLabel isActive={isTitleActive}>제목</InputLabel>
+        <InputLabel $active={isTitleActive.toString()}>제목</InputLabel>
         <Input
           type="text"
           onFocus={() => handleFocus("title")}
           onBlur={() => handleBlur("title")}
         />
       </InputBox>
-      <InputBox>
-        <InputLabel isActive={isSubtitleActive}>부제목</InputLabel>
-        <Input
-          type="text"
-          onFocus={() => handleFocus("subtitle")}
-          onBlur={() => handleBlur("subtitle")}
-        />
-      </InputBox>
-      <InputBox>
-        <InputLabel isActive={isCategoryActive}>분류</InputLabel>
-        <Input
-          type="text"
-          onFocus={() => handleFocus("category")}
-          onBlur={() => handleBlur("category")}
-        />
-      </InputBox>
+      {layoutValue === 2 ? null : (
+        <InputBox>
+          <InputLabel $active={isSubtitleActive.toString()}>부제목</InputLabel>
+          <Input
+            type="text"
+            onFocus={() => handleFocus("subtitle")}
+            onBlur={() => handleBlur("subtitle")}
+          />
+        </InputBox>
+      )}
+      {layoutValue === 3 ? null : (
+        <InputBox>
+          <InputLabel $active={isCategoryActive.toString()}>분류</InputLabel>
+          <Input
+            type="text"
+            onFocus={() => handleFocus("category")}
+            onBlur={() => handleBlur("category")}
+          />
+        </InputBox>
+      )}
     </>
   );
 }
@@ -64,9 +64,9 @@ const InputBox = styled.div`
   height: 96px;
   margin-bottom: 30px;
 `;
-const InputLabel = styled.div<InputLabelProps>`
+const InputLabel = styled.div<{ $active: string }>`
   font-size: 24px;
-  color: ${(props) => (props.isActive ? "#ff0000" : "#828282")};
+  color: ${(props) => (props.$active === "true" ? "#ff0000" : "#828282")};
   transition: color 0.3s ease-in-out;
 `;
 const Input = styled.input`
