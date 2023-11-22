@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import LayoutBtn from "../components/thumbnail/LayoutBtn";
+import Screen from "../components/thumbnail/Screen";
 
 function Thumbnail() {
   return (
     <Container>
       <LayoutBtn />
+      <Screen />
     </Container>
   );
 }
