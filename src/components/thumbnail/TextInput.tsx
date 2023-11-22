@@ -31,7 +31,7 @@ function TextInput() {
   };
 
   return (
-    <Container>
+    <>
       <InputBox>
         <InputLabel isActive={isTitleActive}>제목</InputLabel>
         <Input
@@ -56,13 +56,10 @@ function TextInput() {
           onBlur={() => handleBlur("category")}
         />
       </InputBox>
-    </Container>
+    </>
   );
 }
 
-const Container = styled.div`
-  height: 786px;
-`;
 const InputBox = styled.div`
   height: 96px;
   margin-bottom: 30px;

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import LayoutBtn from "../components/thumbnail/LayoutBtn";
 import Screen from "../components/thumbnail/Screen";
 import TextInput from "../components/thumbnail/TextInput";
+import OptionBtn from "../components/thumbnail/OptionBtn";
 
 function Thumbnail() {
   return (
@@ -9,6 +10,7 @@ function Thumbnail() {
       <LayoutBtn />
       <Screen />
       <TextInput />
+      <OptionBtn />
     </Container>
   );
 }
