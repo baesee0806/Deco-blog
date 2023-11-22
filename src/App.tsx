@@ -1,17 +1,19 @@
 import styled from "styled-components";
 import Router from "./routes/Router";
+import GlobalStyle from "./GlobalStyle";
 
 function App() {
   return (
-    <Layout>
-      <Router />
-    </Layout>
+    <>
+      <GlobalStyle />
+      <Layout>
+        <Router />
+      </Layout>
+    </>
   );
 }
 const Layout = styled.div`
-  width: 1200px;
-  height: 80vh;
-  margin: 80px auto 0 auto;
+  width: 1280px;
 `;
 
 export default App;
