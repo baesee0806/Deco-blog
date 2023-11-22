@@ -1,26 +1,38 @@
 import styled from "styled-components";
 
 interface ScreenProps {
+  layoutValue: number;
   title: string;
   subtitle: string;
   category: string;
+  screenColor: string;
 }
 
-function Screen({ title, subtitle, category }: ScreenProps) {
+function Screen({
+  layoutValue,
+  title,
+  subtitle,
+  category,
+  screenColor,
+}: ScreenProps) {
   return (
-    <Container>
+    <Container $screencolor={screenColor}>
       <Title>{title || "제목을 입력하세요"}</Title>
-      <Line />
-      <Subtitle>{subtitle || "부제목을 입력하세요"}</Subtitle>
-      <Classification>{category || "분류를 입력하세요"}</Classification>
+      {layoutValue === 2 ? null : <Line />}
+      <Subtitle>
+        {layoutValue === 2 ? "" : subtitle || "부제목을 입력하세요"}
+      </Subtitle>
+      <Classification>
+        {layoutValue === 3 ? "" : category || "분류를 입력하세요"}
+      </Classification>
     </Container>
   );
 }
 
-const Container = styled.div`
+const Container = styled.div<{ $screencolor: string }>`
   width: 768px;
   height: 402px;
-  background-color: bisque;
+  background-color: ${(props) => props.$screencolor};
   margin-bottom: 30px;
 `;
 const Title = styled.div`

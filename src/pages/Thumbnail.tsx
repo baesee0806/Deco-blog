@@ -5,6 +5,7 @@ import TextInput from "../components/thumbnail/TextInput";
 import OptionBtn from "../components/thumbnail/OptionBtn";
 import { useState } from "react";
 import { useInput } from "../hooks/useInput";
+import { useRandomColor } from "../hooks/useRandomColor";
 
 function Thumbnail() {
   const [layoutValue, setLayoutValue] = useState(1);
@@ -16,11 +17,17 @@ function Thumbnail() {
     subtitleOnChange,
     categoryOnChange,
   } = useInput();
-
+  const { screenColor, onChangeScreenColor } = useRandomColor();
   return (
     <Container>
       <LayoutBtn layoutValue={layoutValue} setLayoutValue={setLayoutValue} />
-      <Screen title={title} subtitle={subtitle} category={category} />
+      <Screen
+        layoutValue={layoutValue}
+        title={title}
+        subtitle={subtitle}
+        category={category}
+        screenColor={screenColor}
+      />
       <TextInput
         layoutValue={layoutValue}
         title={title}
@@ -30,7 +37,7 @@ function Thumbnail() {
         subtitleOnChange={subtitleOnChange}
         categoryOnChange={categoryOnChange}
       />
-      <OptionBtn />
+      <OptionBtn onChangeScreenColor={onChangeScreenColor} />
     </Container>
   );
 }
