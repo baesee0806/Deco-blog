@@ -2,7 +2,7 @@
 
 ### Velog Thumbnail Maker
 
-- velog 썸네일을 만드
+- velog 썸네일을 쉽게 만들어주는 웹 사이트입니다.
 
   <br/>
   <br/>
