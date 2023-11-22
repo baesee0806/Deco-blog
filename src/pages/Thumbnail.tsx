@@ -3,13 +3,16 @@ import LayoutBtn from "../components/thumbnail/LayoutBtn";
 import Screen from "../components/thumbnail/Screen";
 import TextInput from "../components/thumbnail/TextInput";
 import OptionBtn from "../components/thumbnail/OptionBtn";
+import { useState } from "react";
 
 function Thumbnail() {
+  const [layoutValue, setLayoutValue] = useState(1);
+
   return (
     <Container>
-      <LayoutBtn />
+      <LayoutBtn layoutValue={layoutValue} setLayoutValue={setLayoutValue} />
       <Screen />
-      <TextInput />
+      <TextInput layoutValue={layoutValue} />
       <OptionBtn />
     </Container>
   );
