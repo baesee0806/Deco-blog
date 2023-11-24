@@ -1,14 +1,16 @@
+import React, { memo } from "react";
 import styled from "styled-components";
 
 interface OptionBtnProps {
   onChangeScreenColor: () => void;
+  textColorChange: () => void;
 }
 
-function OptionBtn({ onChangeScreenColor }: OptionBtnProps) {
+function OptionBtn({ onChangeScreenColor, textColorChange }: OptionBtnProps) {
   return (
     <Container>
       <OptionButton onClick={onChangeScreenColor}>랜덤 색상</OptionButton>
-      <OptionButton>글자 색상</OptionButton>
+      <OptionButton onClick={textColorChange}>글자 색상</OptionButton>
       <OptionButton>초기화</OptionButton>
       <OptionButton>이미지 저장</OptionButton>
     </Container>
@@ -37,4 +39,6 @@ const OptionButton = styled.button`
   }
 `;
 
-export default OptionBtn;
+const MemoizedOptionBtn = memo(OptionBtn);
+
+export default MemoizedOptionBtn;

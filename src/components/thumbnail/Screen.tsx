@@ -6,6 +6,7 @@ interface ScreenProps {
   subtitle: string;
   category: string;
   screenColor: string;
+  textColor: string;
 }
 
 function Screen({
@@ -14,11 +15,12 @@ function Screen({
   subtitle,
   category,
   screenColor,
+  textColor,
 }: ScreenProps) {
   return (
-    <Container $screencolor={screenColor}>
+    <Container $screencolor={screenColor} $textColor={textColor}>
       <Title>{title || "제목을 입력하세요"}</Title>
-      {layoutValue === 2 ? null : <Line />}
+      {layoutValue === 2 ? null : <Line $textColor={textColor} />}
       <Subtitle>
         {layoutValue === 2 ? "" : subtitle || "부제목을 입력하세요"}
       </Subtitle>
@@ -29,11 +31,12 @@ function Screen({
   );
 }
 
-const Container = styled.div<{ $screencolor: string }>`
+const Container = styled.div<{ $screencolor: string; $textColor: string }>`
   width: 768px;
   height: 402px;
   background-color: ${(props) => props.$screencolor};
   margin-bottom: 30px;
+  color: ${(props) => props.$textColor};
 `;
 const Title = styled.div`
   height: 50%;
@@ -56,10 +59,10 @@ const Classification = styled.div`
   align-items: center;
   font-size: 24px;
 `;
-const Line = styled.hr`
+const Line = styled.hr<{ $textColor: string }>`
   width: 204px;
   margin: 0 auto;
-  border: 1px solid black;
+  border: 1px solid ${(props) => props.$textColor};
 `;
 
 export default Screen;

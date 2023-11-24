@@ -1,3 +1,4 @@
+import React, { memo } from "react";
 import styled from "styled-components";
 import LayoutBtn from "../components/thumbnail/LayoutBtn";
 import Screen from "../components/thumbnail/Screen";
@@ -6,9 +7,11 @@ import OptionBtn from "../components/thumbnail/OptionBtn";
 import { useState } from "react";
 import { useInput } from "../hooks/useInput";
 import { useRandomColor } from "../hooks/useRandomColor";
+import { useTextColor } from "../hooks/useTextColor";
 
 function Thumbnail() {
   const [layoutValue, setLayoutValue] = useState(1);
+
   const {
     title,
     subtitle,
@@ -17,7 +20,12 @@ function Thumbnail() {
     subtitleOnChange,
     categoryOnChange,
   } = useInput();
+
   const { screenColor, onChangeScreenColor } = useRandomColor();
+
+  const { textColor, textColorChange } = useTextColor();
+  console.log(textColor);
+
   return (
     <Container>
       <LayoutBtn layoutValue={layoutValue} setLayoutValue={setLayoutValue} />
@@ -27,6 +35,7 @@ function Thumbnail() {
         subtitle={subtitle}
         category={category}
         screenColor={screenColor}
+        textColor={textColor}
       />
       <TextInput
         layoutValue={layoutValue}
@@ -37,7 +46,10 @@ function Thumbnail() {
         subtitleOnChange={subtitleOnChange}
         categoryOnChange={categoryOnChange}
       />
-      <OptionBtn onChangeScreenColor={onChangeScreenColor} />
+      <OptionBtn
+        onChangeScreenColor={onChangeScreenColor}
+        textColorChange={textColorChange}
+      />
     </Container>
   );
 }
@@ -47,4 +59,6 @@ const Container = styled.main`
   margin: 25px auto 0 auto;
 `;
 
-export default Thumbnail;
+const MemoizedThumbnail = memo(Thumbnail);
+
+export default MemoizedThumbnail;
