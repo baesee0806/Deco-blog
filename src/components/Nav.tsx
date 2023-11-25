@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 function Nav() {
-  const pathName = window.location.pathname;
+  // const pathName = window.location.pathname;
 
   return (
     <Container>
