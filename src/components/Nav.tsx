@@ -19,6 +19,7 @@ const Container = styled.nav`
   height: 74px;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid #e0e0e0;
 `;
 const LinkContainer = styled.div`
   width: 550px;
