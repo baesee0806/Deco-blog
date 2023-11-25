@@ -26,6 +26,12 @@ export const useInput = () => {
     []
   );
 
+  const initText = useCallback(() => {
+    setTitle("");
+    setSubtitle("");
+    setCategory("");
+  }, []);
+
   return {
     title,
     subtitle,
@@ -33,5 +39,6 @@ export const useInput = () => {
     titleOnChange,
     subtitleOnChange,
     categoryOnChange,
+    initText,
   };
 };

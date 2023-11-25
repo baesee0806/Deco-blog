@@ -4,14 +4,19 @@ import styled from "styled-components";
 interface OptionBtnProps {
   onChangeScreenColor: () => void;
   textColorChange: () => void;
+  initText: () => void;
 }
 
-function OptionBtn({ onChangeScreenColor, textColorChange }: OptionBtnProps) {
+function OptionBtn({
+  onChangeScreenColor,
+  textColorChange,
+  initText,
+}: OptionBtnProps) {
   return (
     <Container>
       <OptionButton onClick={onChangeScreenColor}>랜덤 색상</OptionButton>
       <OptionButton onClick={textColorChange}>글자 색상</OptionButton>
-      <OptionButton>초기화</OptionButton>
+      <OptionButton onClick={initText}>초기화</OptionButton>
       <OptionButton>이미지 저장</OptionButton>
     </Container>
   );

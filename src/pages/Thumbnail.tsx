@@ -19,6 +19,7 @@ function Thumbnail() {
     titleOnChange,
     subtitleOnChange,
     categoryOnChange,
+    initText,
   } = useInput();
 
   const { screenColor, onChangeScreenColor } = useRandomColor();
@@ -49,6 +50,7 @@ function Thumbnail() {
       <OptionBtn
         onChangeScreenColor={onChangeScreenColor}
         textColorChange={textColorChange}
+        initText={initText}
       />
     </Container>
   );
