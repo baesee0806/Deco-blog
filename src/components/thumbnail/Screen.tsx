@@ -18,7 +18,7 @@ function Screen({
   textColor,
 }: ScreenProps) {
   return (
-    <Container $screencolor={screenColor} $textColor={textColor}>
+    <Container id="screen" $screencolor={screenColor} $textColor={textColor}>
       <Title>{title || "제목을 입력하세요"}</Title>
       {layoutValue === 2 ? null : <Line $textColor={textColor} />}
       <Subtitle>
@@ -44,6 +44,7 @@ const Title = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 48px;
+  padding-top: 100px;
 `;
 const Subtitle = styled.div`
   height: 25%;

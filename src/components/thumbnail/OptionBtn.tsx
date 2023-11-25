@@ -5,19 +5,21 @@ interface OptionBtnProps {
   onChangeScreenColor: () => void;
   textColorChange: () => void;
   initText: () => void;
+  saveAsImageHandler: () => void;
 }
 
 function OptionBtn({
   onChangeScreenColor,
   textColorChange,
   initText,
+  saveAsImageHandler,
 }: OptionBtnProps) {
   return (
     <Container>
       <OptionButton onClick={onChangeScreenColor}>랜덤 색상</OptionButton>
       <OptionButton onClick={textColorChange}>글자 색상</OptionButton>
       <OptionButton onClick={initText}>초기화</OptionButton>
-      <OptionButton>이미지 저장</OptionButton>
+      <OptionButton onClick={saveAsImageHandler}>이미지 저장</OptionButton>
     </Container>
   );
 }
