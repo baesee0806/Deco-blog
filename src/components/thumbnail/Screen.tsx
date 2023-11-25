@@ -1,27 +1,42 @@
 import styled from "styled-components";
 
 interface ScreenProps {
+  layoutValue: number;
   title: string;
   subtitle: string;
   category: string;
+  screenColor: string;
+  textColor: string;
 }
 
-function Screen({ title, subtitle, category }: ScreenProps) {
+function Screen({
+  layoutValue,
+  title,
+  subtitle,
+  category,
+  screenColor,
+  textColor,
+}: ScreenProps) {
   return (
-    <Container>
+    <Container id="screen" $screencolor={screenColor} $textColor={textColor}>
       <Title>{title || "제목을 입력하세요"}</Title>
-      <Line />
-      <Subtitle>{subtitle || "부제목을 입력하세요"}</Subtitle>
-      <Classification>{category || "분류를 입력하세요"}</Classification>
+      {layoutValue === 2 ? null : <Line $textColor={textColor} />}
+      <Subtitle>
+        {layoutValue === 2 ? "" : subtitle || "부제목을 입력하세요"}
+      </Subtitle>
+      <Classification>
+        {layoutValue === 3 ? "" : category || "분류를 입력하세요"}
+      </Classification>
     </Container>
   );
 }
 
-const Container = styled.div`
+const Container = styled.div<{ $screencolor: string; $textColor: string }>`
   width: 768px;
   height: 402px;
-  background-color: bisque;
+  background-color: ${(props) => props.$screencolor};
   margin-bottom: 30px;
+  color: ${(props) => props.$textColor};
 `;
 const Title = styled.div`
   height: 50%;
@@ -29,6 +44,7 @@ const Title = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 48px;
+  padding-top: 100px;
 `;
 const Subtitle = styled.div`
   height: 25%;
@@ -44,10 +60,10 @@ const Classification = styled.div`
   align-items: center;
   font-size: 24px;
 `;
-const Line = styled.hr`
+const Line = styled.hr<{ $textColor: string }>`
   width: 204px;
   margin: 0 auto;
-  border: 1px solid black;
+  border: 1px solid ${(props) => props.$textColor};
 `;
 
 export default Screen;

@@ -1,12 +1,25 @@
+import React, { memo } from "react";
 import styled from "styled-components";
 
-function OptionBtn() {
+interface OptionBtnProps {
+  onChangeScreenColor: () => void;
+  textColorChange: () => void;
+  initText: () => void;
+  saveAsImageHandler: () => void;
+}
+
+function OptionBtn({
+  onChangeScreenColor,
+  textColorChange,
+  initText,
+  saveAsImageHandler,
+}: OptionBtnProps) {
   return (
     <Container>
-      <OptionButton>랜덤 색상</OptionButton>
-      <OptionButton>글자 색상</OptionButton>
-      <OptionButton>초기화</OptionButton>
-      <OptionButton>이미지 저장</OptionButton>
+      <OptionButton onClick={onChangeScreenColor}>랜덤 색상</OptionButton>
+      <OptionButton onClick={textColorChange}>글자 색상</OptionButton>
+      <OptionButton onClick={initText}>초기화</OptionButton>
+      <OptionButton onClick={saveAsImageHandler}>이미지 저장</OptionButton>
     </Container>
   );
 }
@@ -24,6 +37,15 @@ const OptionButton = styled.button`
   border: none;
   border-radius: 10px;
   font-size: 24px;
+  background-color: #ffffff;
+  cursor: pointer;
+  &:hover {
+    background-color: #beadfa;
+    color: #ffffff;
+    transition: 0.3s ease-in-out;
+  }
 `;
 
-export default OptionBtn;
+const MemoizedOptionBtn = memo(OptionBtn);
+
+export default MemoizedOptionBtn;
